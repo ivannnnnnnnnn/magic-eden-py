@@ -1,4 +1,6 @@
-# Python wrap for solana NFT marketplaces api such as MagicEden and Solanart
+# Python wrap for api solana NFT marketplace MagicEden
+
+```pip install magic-eden-py```
 
 #### Api classes have methods corresponded to endpoints from official [docs](https://api.magiceden.dev/)
 
@@ -66,7 +68,7 @@
 ### Official MagicEden api python wrapper classes
 
 ```
->>> from solapi.magic_eden.official_api import (
+>>> from magic_eden.api import (
   MagicEdenTokensApi, 
   MagicEdenWalletsApi, 
   MagicEdenCollectionsApi, 

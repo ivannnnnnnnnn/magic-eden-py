@@ -2,9 +2,8 @@ from typing import List, Dict
 
 from magic_eden.api.base import MagicEdenOfficialApi
 from magic_eden.api.utils.consts import MEAPICollectionsUrlsBuilder
-from magic_eden.api.utils.data import list_map
 from magic_eden.api.utils.data import listing_response_mapper, activity_response_mapper, \
-    collection_stats_mapper
+    collection_stats_mapper, list_map, collections_response_mapper
 from magic_eden.api.utils.types import MECollection, MEActivity, MECollectionStats, MEListingItem
 
 
@@ -27,7 +26,8 @@ class MagicEdenCollectionsApi(MagicEdenOfficialApi):
             limit: int = 100,
             request_kwargs: dict = None
     ) -> List[MECollection]:
-        return self.collections_dirty(offset, limit, request_kwargs=request_kwargs)
+        dirty = self.collections_dirty(offset, limit, request_kwargs=request_kwargs)
+        return list_map(collections_response_mapper, dirty)
 
     def listings_dirty(
             self,

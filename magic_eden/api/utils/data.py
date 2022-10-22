@@ -1,9 +1,10 @@
 from typing import Optional, List
 
 from magic_eden.api.utils.consts import METokenResponse, MEActivityResponse, MEOfferResponse, \
-    MEEscrowBalanceResponse, MEListingResponse, MECollectionStatsResponse, MELaunchpadCollectionResponse
+    MEEscrowBalanceResponse, MEListingResponse, MECollectionStatsResponse, MELaunchpadCollectionResponse, \
+    MECollectionResponse
 from magic_eden.api.utils.types import METoken, MEActivity, MEOffer, MEEscrowBalance, MEListingItem, \
-    MECollectionStats
+    MECollectionStats, MECollection
 from .converters import convert_sol_absolute
 from .datetime import parse_timestamp, parse_date
 
@@ -76,6 +77,20 @@ def escrow_balance_response_mapper(data: dict) -> MEEscrowBalance:
     return {
         'buyer_escrow': data.get(MEEscrowBalanceResponse.buyer_escrow, ''),
         'balance': data.get(MEEscrowBalanceResponse.balance, 0)
+    }
+
+
+def collections_response_mapper(data: dict) -> MECollection:
+    return {
+        'symbol': data.get(MECollectionResponse.symbol, ''),
+        'name': data.get(MECollectionResponse.name, ''),
+        'description': data.get(MECollectionResponse.description, ''),
+        'image': data.get(MECollectionResponse.image, ''),
+        'twitter': data.get(MECollectionResponse.twitter, ''),
+        'discord': data.get(MECollectionResponse.discord, ''),
+        'website': data.get(MECollectionResponse.website, ''),
+        'categories': data.get(MECollectionResponse.categories, []),
+        'is_flagged': data.get(MECollectionResponse.is_flagged, None)
     }
 
 

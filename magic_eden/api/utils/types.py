@@ -95,6 +95,7 @@ class MECollection(TypedDict):
     discord: Optional[str]
     website: Optional[str]
     categories: List[str]
+    is_flagged: Optional[bool]
 
 
 class MECollectionStats(TypedDict):

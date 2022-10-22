@@ -67,6 +67,18 @@ class MEAPILaunchpadUrlsBuilder(MEUrlBuilder):
         return f'{self._endpoint}/launchpad/collections?offset={offset}&limit={limit}'
 
 
+class MECollectionResponse:
+    symbol = 'symbol'
+    name = 'name'
+    description = 'description'
+    image = 'image'
+    twitter = 'twitter'
+    discord = 'discord'
+    website = 'website'
+    categories = 'categories'
+    is_flagged = 'isFlagged'
+
+
 class METokenResponse:
     mint_address = 'mintAddress'
     owner = 'owner'
